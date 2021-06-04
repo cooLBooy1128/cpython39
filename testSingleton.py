@@ -117,6 +117,23 @@ class Database(metaclass=MetaSingleton):
         return self.cursorobj
 
 
+class Database1:
+    _instance = None
+    connection = None
+
+    def __new__(cls, *args, **kwargs):
+        if Database1._instance is None:
+            Database1._instance = super().__new__(cls, *args, **kwargs)
+        return Database1._instance
+
+    def connect(self):
+        if self.connection is None:
+            print('create cursor object')
+            self.connection = sqlite3.connect('sqlitedb/test2')
+            self.cursorobj = self.connection.cursor()
+        return self.cursorobj
+
+
 class HealthCheck:
     _instance = None
 
@@ -176,9 +193,13 @@ if __name__ == '__main__':
     # db2 = Database().connect()
     # print(db1, db2)
 
-    hc1 = HealthCheck()
-    hc2 = HealthCheck()
-    hc1.addServer()
-    print(hc1._servers)
-    hc2.changeServer()
-    print(hc2._servers)
+    db1 = Database1().connect()
+    db2 = Database1().connect()
+    print(db1, db2)
+
+    # hc1 = HealthCheck()
+    # hc2 = HealthCheck()
+    # hc1.addServer()
+    # print(hc1._servers)
+    # hc2.changeServer()
+    # print(hc2._servers)
