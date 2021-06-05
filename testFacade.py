@@ -64,7 +64,5 @@ class You:
 
 
 if __name__ == '__main__':
-    print('\n' + '-' * 50 + '\n')
-
     you = You()
     you.askEventAssistant()
