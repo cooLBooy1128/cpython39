@@ -1,7 +1,7 @@
 import cgi
 
-reshtml = '''Content-Type: text/html\n
-<html>
+reshtml = '''Content-Type: text/templates\n
+<templates>
 <head>
     <meta charset="UTF-8">
     <title>Friends CGI Demo (dynamic screen)</title>
@@ -11,7 +11,7 @@ reshtml = '''Content-Type: text/html\n
 Your name is: <b>{}</b><p>
 You have <b>{}</b> friends.
 </body>
-</html>
+</templates>
 '''
 
 form = cgi.FieldStorage()
