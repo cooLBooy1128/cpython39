@@ -65,6 +65,6 @@ if __name__ == '__main__':
     http_server.listen(8000)
     try:
         tornado.ioloop.IOLoop.instance().start()
-    except Exception:
+    except BaseException:
         print('Stop http server 8000')
         http_server.stop()
